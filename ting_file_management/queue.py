@@ -12,7 +12,7 @@ class Queue(AbstractQueue):
         self.queue.append(value)
 
     def dequeue(self):
-        if (self.__len__()):
+        if (len(self)):
             return self.queue.pop(0)
 
     def search(self, index):

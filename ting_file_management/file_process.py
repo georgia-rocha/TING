@@ -11,7 +11,7 @@ def process(path_file, instance):
 
 
 def remove(instance):
-    if instance.__len__() == 0:
+    if len(instance) == 0:
         return print("Não há elementos", file=sys.stdout)
 
     path_file = instance.dequeue()
