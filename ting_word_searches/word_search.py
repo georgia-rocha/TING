@@ -22,4 +22,25 @@ def exists_word(word, instance):
 
 
 def search_by_word(word, instance):
-    pass
+    occurrences = []
+
+    if not instance.queue:
+        return None
+
+    for file in instance.queue:
+        file_processing = txt_importer(file)
+        occurrences_in_file = [
+            {"linha": line_number, "conteudo": line.rstrip()}
+            for line_number, line in enumerate(file_processing, 1)
+            if word.lower() in line.lower()
+        ]
+
+        if occurrences_in_file:
+            file_info = {
+                "palavra": word,
+                "arquivo": file,
+                "ocorrencias": occurrences_in_file
+            }
+            occurrences.append(file_info)
+
+    return occurrences
